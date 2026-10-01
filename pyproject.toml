@@ -8,6 +8,9 @@ requires-python = ">=3.12"
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 testpaths = ["tests"]
+# Without this, `pytest` only works when invoked as `python -m pytest`, which
+# silently puts the CWD on sys.path. CI calls the bare entry point.
+pythonpath = ["."]
 filterwarnings = ["error::DeprecationWarning:app.*"]
 
 [tool.ruff]
